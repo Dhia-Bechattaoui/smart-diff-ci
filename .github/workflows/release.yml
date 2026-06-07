@@ -165,7 +165,7 @@ jobs:
           cd npm
           
           # Update package.json version
-          npm version $VERSION --no-git-tag-version
+          npm version $VERSION --no-git-tag-version --allow-same-version
           
           # Update install.js version
           sed -i "s/const VERSION = '.*';/const VERSION = 'v$VERSION';/" install.js
