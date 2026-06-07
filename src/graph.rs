@@ -30,11 +30,19 @@ impl DependencyGraph {
         while let Some(file) = queue.pop() {
             // If we successfully insert (meaning it wasn't already processed)
             if affected.insert(file.clone()) {
-                // If other files depend on this file, add them to the queue to be checked
-                if let Some(dependents) = self.inverse_edges.get(&file) {
-                    for dep in dependents {
-                        if !affected.contains(dep) {
-                            queue.push(dep.clone());
+                // Since imports can be relative (e.g. `../utils.dart`) or package-based 
+                // (`package:law_max/utils.dart`), and Git diffs are relative to the root 
+                // (`lib/utils.dart`), we use fuzzy substring matching for the MVP to connect them.
+                let normalized_file = file.replace("lib/", "").replace("src/", "");
+                
+                for (import_path, dependents) in &self.inverse_edges {
+                    let normalized_import = import_path.replace("package:", "").replace("../", "").replace("./", "");
+                    
+                    if normalized_import.ends_with(&normalized_file) || normalized_file.ends_with(&normalized_import) {
+                        for dep in dependents {
+                            if !affected.contains(dep) {
+                                queue.push(dep.clone());
+                            }
                         }
                     }
                 }

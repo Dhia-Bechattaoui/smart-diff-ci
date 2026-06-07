@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.8] - 2026-06-07
+
+### Added
+- Implemented **fuzzy substring matching** in the Dependency Graph core (`src/graph.rs`). This allows seamless resolution between Git's relative file paths (`lib/utils.dart`) and Language-specific package imports (e.g. Dart's `import 'package:app/utils.dart';`).
+
 ## [0.0.7] - 2026-06-07
 
 ### Added
@@ -48,7 +53,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation files (`README.md`, `PLAN.md`, `.agents/`).
 - Basic Rust CLI boilerplate using `clap` and `anyhow` for argument parsing and error handling.
 
-[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.7...HEAD
+[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.8...HEAD
+[0.0.8]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.4...v0.0.5
