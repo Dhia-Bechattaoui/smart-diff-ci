@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { execSync } = require('child_process');
 
-const VERSION = 'v0.1.2';
+const VERSION = 'v0.1.3';
 const REPO = 'dhia-bechattaoui/smart-diff-ci';
 
 function getTarget() {

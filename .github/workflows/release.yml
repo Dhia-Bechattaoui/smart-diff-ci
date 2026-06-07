@@ -109,34 +109,34 @@ jobs:
           LINUX_SHA=$(sha256sum linux.tar.gz | awk '{ print $1 }')
 
           cat <<EOF > Formula/smart-diff-ci.rb
-class SmartDiffCi < Formula
-  desc "Blazing fast, language-agnostic Test Impact Analyzer"
-  homepage "https://github.com/dhia-bechattaoui/smart-diff-ci"
-  version "$VERSION"
-  license "MIT"
+          class SmartDiffCi < Formula
+            desc "Blazing fast, language-agnostic Test Impact Analyzer"
+            homepage "https://github.com/dhia-bechattaoui/smart-diff-ci"
+            version "$VERSION"
+            license "MIT"
 
-  if OS.mac?
-    if Hardware::CPU.arm?
-      url "$MAC_ARM_URL"
-      sha256 "$MAC_ARM_SHA"
-    else
-      url "$MAC_INTEL_URL"
-      sha256 "$MAC_INTEL_SHA"
-    end
-  elsif OS.linux?
-    url "$LINUX_URL"
-    sha256 "$LINUX_SHA"
-  end
+            if OS.mac?
+              if Hardware::CPU.arm?
+                url "$MAC_ARM_URL"
+                sha256 "$MAC_ARM_SHA"
+              else
+                url "$MAC_INTEL_URL"
+                sha256 "$MAC_INTEL_SHA"
+              end
+            elsif OS.linux?
+              url "$LINUX_URL"
+              sha256 "$LINUX_SHA"
+            end
 
-  def install
-    bin.install "smart-diff-ci"
-  end
+            def install
+              bin.install "smart-diff-ci"
+            end
 
-  test do
-    system "#{bin}/smart-diff-ci", "--version"
-  end
-end
-EOF
+            test do
+              system "#{bin}/smart-diff-ci", "--version"
+            end
+          end
+          EOF
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

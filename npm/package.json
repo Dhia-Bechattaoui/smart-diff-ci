@@ -1,6 +1,6 @@
 {
   "name": "smart-diff-ci",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A blazing fast, language-agnostic Test Impact Analyzer for CI/CD pipelines.",
   "main": "index.js",
   "bin": {
