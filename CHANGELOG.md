@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.7] - 2026-06-07
+
+### Added
+- Git Diff module now fully supports local uncommitted changes, seamlessly analyzing staged, unstaged, and untracked files locally.
+- Unified detection logic merges committed diffs against the base branch with the current working directory state.
+
 ## [0.0.6] - 2026-06-07
 
 ### Added
@@ -42,7 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation files (`README.md`, `PLAN.md`, `.agents/`).
 - Basic Rust CLI boilerplate using `clap` and `anyhow` for argument parsing and error handling.
 
-[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.6...HEAD
+[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.7...HEAD
+[0.0.7]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.3...v0.0.4
