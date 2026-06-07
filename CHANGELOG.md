@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6] - 2026-06-07
+
+### Added
+- Runner Bridge in `src/main.rs` to seamlessly connect the CLI commands with the Git Diff detector, Crawler, and Dependency Graph.
+- Built-in heuristic to automatically isolate and filter affected test files (e.g., `_test.dart`, `.test.js`, `test_*.py`) from the complete dependency graph resolution.
+
 ## [0.0.5] - 2026-06-07
 
 ### Added
@@ -36,7 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation files (`README.md`, `PLAN.md`, `.agents/`).
 - Basic Rust CLI boilerplate using `clap` and `anyhow` for argument parsing and error handling.
 
-[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.5...HEAD
+[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.6...HEAD
+[0.0.6]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.2...v0.0.3
