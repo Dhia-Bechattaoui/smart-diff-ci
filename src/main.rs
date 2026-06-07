@@ -79,8 +79,9 @@ fn main() -> Result<()> {
                 Err(e) => println!("❌ Error getting changed files: {}", e),
             }
         }
-        Commands::Run { base } => {
-            println!("🚧 'run' command is under construction. Please use 'analyze' for now.");
+        Commands::Run { base: _ } => {
+            // TODO: Implement the Runner module
+            println!("🚀 The 'run' command will be implemented in the next phase!");
         }
     }
 
