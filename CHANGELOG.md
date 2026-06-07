@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-07
+
+### Added
+- **Test Runner Bridge (`smart-diff run`)**: Added a wrapper mode that dynamically executes the user's test runner (e.g. `flutter test`) passing only the affected files. It forwards `stdout` and bubbles up the correct exit code.
+- **YAML Config Parser**: The tool now dynamically parses a `smart-diff.yaml` configuration file at the repository root to overwrite hardcoded test-matching heuristics using Regex strings.
+- **Cross-Platform Automated Releases**: Automated GitHub Actions to compile and compress binaries for Windows, Linux, and macOS (Intel and ARM).
+- **Official Homebrew Formula**: Built and distributed an automated Homebrew Tap for Mac users.
+- **NPM Wrapper**: Shipped a native Node.js wrapper to `npmjs.com` to allow web developers to install the CLI without Rust.
+- **GitHub Action Support**: Packaged the repository as a native GitHub Action.
+
 ## [0.0.8] - 2026-06-07
 
 ### Added
@@ -53,7 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation files (`README.md`, `PLAN.md`, `.agents/`).
 - Basic Rust CLI boilerplate using `clap` and `anyhow` for argument parsing and error handling.
 
-[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.8...HEAD
+[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.8...v0.2.0
 [0.0.8]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.5...v0.0.6
