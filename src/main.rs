@@ -1,6 +1,7 @@
 mod git;
 mod graph;
 mod parser;
+mod crawler;
 
 use anyhow::Result;
 use clap::{Parser, Subcommand};

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5] - 2026-06-07
+
+### Added
+- Inverse Dependency Crawler module in `src/crawler.rs` utilizing the `ignore` crate to traverse the repository, parse imports, and construct the Dependency Graph while respecting `.gitignore`.
+
 ## [0.0.4] - 2026-06-07
 
 ### Added
@@ -31,7 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation files (`README.md`, `PLAN.md`, `.agents/`).
 - Basic Rust CLI boilerplate using `clap` and `anyhow` for argument parsing and error handling.
 
-[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.5...HEAD
+[0.0.5]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.1...v0.0.2
