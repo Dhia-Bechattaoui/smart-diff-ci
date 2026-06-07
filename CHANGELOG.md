@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-07
+
+### Fixed
+- **Automated Releases**: Updated GitHub Action to extract and publish release notes from the `CHANGELOG.md` file rather than auto-generating them.
+
 ## [0.3.0] - 2026-06-07
 
 ### Added
@@ -68,7 +73,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation files (`README.md`, `PLAN.md`, `.agents/`).
 - Basic Rust CLI boilerplate using `clap` and `anyhow` for argument parsing and error handling.
 
-[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.8...v0.2.0
 [0.0.8]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.7...v0.0.8
