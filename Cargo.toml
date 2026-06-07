@@ -1,7 +1,13 @@
 [package]
 name = "smart-diff-ci"
-version = "0.1.0"
-edition = "2024"
+version = "0.0.9"
+edition = "2021"
+description = "A blazing fast, language-agnostic Test Impact Analyzer for CI/CD pipelines."
+license = "MIT"
+repository = "https://github.com/dhia-bechattaoui/smart-diff-ci"
+readme = "README.md"
+categories = ["development-tools", "command-line-utilities"]
+keywords = ["ci", "testing", "impact-analysis", "git", "cli"]
 
 [dependencies]
 anyhow = "1.0.102"

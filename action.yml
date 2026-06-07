@@ -1,0 +1,18 @@
+name: 'Smart Diff CI'
+description: 'A blazing fast, language-agnostic Test Impact Analyzer'
+branding:
+  icon: 'zap'
+  color: 'yellow'
+
+inputs:
+  base:
+    description: 'The base branch or commit to compare against (e.g. origin/main or HEAD~1)'
+    required: true
+    default: 'HEAD~1'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Download and run smart-diff-ci
+      shell: bash
+      run: ${{ github.action_path }}/install_and_run.sh ${{ inputs.base }}
