@@ -74,3 +74,72 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: smart-diff-ci-${{ matrix.target }}.zip
+
+  update-homebrew:
+    needs: ['build-release']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Homebrew Tap
+        uses: actions/checkout@v4
+        with:
+          repository: dhia-bechattaoui/homebrew-smart-diff-ci
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          path: homebrew-smart-diff-ci
+
+      - name: Update Formula
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          echo "Updating to version $VERSION"
+          
+          cd homebrew-smart-diff-ci
+
+          MAC_INTEL_URL="https://github.com/dhia-bechattaoui/smart-diff-ci/releases/download/${GITHUB_REF_NAME}/smart-diff-ci-x86_64-apple-darwin.tar.gz"
+          MAC_ARM_URL="https://github.com/dhia-bechattaoui/smart-diff-ci/releases/download/${GITHUB_REF_NAME}/smart-diff-ci-aarch64-apple-darwin.tar.gz"
+          LINUX_URL="https://github.com/dhia-bechattaoui/smart-diff-ci/releases/download/${GITHUB_REF_NAME}/smart-diff-ci-x86_64-unknown-linux-gnu.tar.gz"
+
+          # Wait for release assets to propagate
+          sleep 10
+
+          curl -sL $MAC_INTEL_URL -o mac-intel.tar.gz
+          curl -sL $MAC_ARM_URL -o mac-arm.tar.gz
+          curl -sL $LINUX_URL -o linux.tar.gz
+
+          MAC_INTEL_SHA=$(sha256sum mac-intel.tar.gz | awk '{ print $1 }')
+          MAC_ARM_SHA=$(sha256sum mac-arm.tar.gz | awk '{ print $1 }')
+          LINUX_SHA=$(sha256sum linux.tar.gz | awk '{ print $1 }')
+
+          cat <<EOF > Formula/smart-diff-ci.rb
+class SmartDiffCi < Formula
+  desc "Blazing fast, language-agnostic Test Impact Analyzer"
+  homepage "https://github.com/dhia-bechattaoui/smart-diff-ci"
+  version "$VERSION"
+  license "MIT"
+
+  if OS.mac?
+    if Hardware::CPU.arm?
+      url "$MAC_ARM_URL"
+      sha256 "$MAC_ARM_SHA"
+    else
+      url "$MAC_INTEL_URL"
+      sha256 "$MAC_INTEL_SHA"
+    end
+  elsif OS.linux?
+    url "$LINUX_URL"
+    sha256 "$LINUX_SHA"
+  end
+
+  def install
+    bin.install "smart-diff-ci"
+  end
+
+  test do
+    system "#{bin}/smart-diff-ci", "--version"
+  end
+end
+EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/smart-diff-ci.rb
+          git commit -m "chore: bump version to ${GITHUB_REF_NAME}"
+          git push origin main
