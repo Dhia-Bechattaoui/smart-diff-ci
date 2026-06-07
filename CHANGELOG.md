@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-06-07
+
+### Added
+- Language Parser module in `src/parser.rs` using regex for blazing fast extraction of import/require statements across Dart, TypeScript/JS, and Python files.
+- Added `regex` and `ignore` dependencies to `Cargo.toml`.
+
 ## [0.0.3] - 2026-06-07
 
 ### Added
@@ -25,7 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic documentation files (`README.md`, `PLAN.md`, `.agents/`).
 - Basic Rust CLI boilerplate using `clap` and `anyhow` for argument parsing and error handling.
 
-[Unreleased]: https://github.com/dhia/smart-diff-ci/compare/v0.0.3...HEAD
-[0.0.3]: https://github.com/dhia/smart-diff-ci/compare/v0.0.2...v0.0.3
-[0.0.2]: https://github.com/dhia/smart-diff-ci/compare/v0.0.1...v0.0.2
-[0.0.1]: https://github.com/dhia/smart-diff-ci/releases/tag/v0.0.1
+[Unreleased]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.3...v0.0.4
+[0.0.3]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/dhia-bechattaoui/smart-diff-ci/compare/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/dhia-bechattaoui/smart-diff-ci/releases/tag/v0.0.1
