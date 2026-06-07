@@ -1,3 +1,5 @@
+mod git;
+
 use anyhow::Result;
 use clap::{Parser, Subcommand};
 
@@ -32,6 +34,15 @@ fn main() -> Result<()> {
     match &cli.command {
         Commands::Analyze { base } => {
             println!("Analyzing workspace against base: {}", base);
+            match git::get_changed_files(base) {
+                Ok(files) => {
+                    println!("Found {} changed files:", files.len());
+                    for file in files {
+                        println!(" - {}", file);
+                    }
+                }
+                Err(e) => println!("Error getting changed files: {}", e),
+            }
             // TODO: Implement dependency graph analysis and test resolution
         }
         Commands::Run { base } => {
