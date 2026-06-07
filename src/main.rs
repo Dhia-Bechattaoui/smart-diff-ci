@@ -1,4 +1,5 @@
 mod git;
+mod graph;
 
 use anyhow::Result;
 use clap::{Parser, Subcommand};
