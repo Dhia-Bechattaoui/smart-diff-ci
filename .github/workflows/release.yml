@@ -143,3 +143,34 @@ jobs:
           git add Formula/smart-diff-ci.rb
           git commit -m "chore: bump version to ${GITHUB_REF_NAME}"
           git push origin main
+
+  publish-npm:
+    needs: ['build-release']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish NPM Wrapper
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          echo "Publishing version $VERSION"
+          
+          cd npm
+          
+          # Update package.json version
+          npm version $VERSION --no-git-tag-version
+          
+          # Update install.js version
+          sed -i "s/const VERSION = '.*';/const VERSION = 'v$VERSION';/" install.js
+          
+          # Publish to NPM using the token
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
